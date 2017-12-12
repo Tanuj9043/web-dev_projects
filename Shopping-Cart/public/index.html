@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Shop</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+	<style>
+		.img-fluid{
+			opacity: .8;
+			height: 130px !important;
+			transition: height .3s;
+		}
+		.img-fluid:hover{
+			opacity: 1;
+			height: 150px !important;
+		}
+		.top{
+			font-family: serif;
+			font-size: 2.5rem;
+			background: linear-gradient(to top,white,lightgreen);
+		}
+		@media only screen and (min-width: 480px){
+			.top{
+				font-size: 3rem;
+			}
+			.img-fluid{
+				height: 180px !important;
+			}
+			.img-fluid:hover{
+				height: 200px !important;
+			}
+			.main{
+				display: flex;
+			}
+			.manager{
+				width: 50%;
+			}
+			.customer{
+				width: 50%;
+			}
+		}
+		@media only screen and (min-width: 720px){
+			.top{
+				font-size: 4rem;
+			}
+			.img-fluid{
+				height: 250px !important;
+			}
+			.img-fluid:hover{
+				height: 270px !important;
+			}
+		}
+		@media only screen and (min-width: 1120px){
+			.top{
+				font-size: 5rem;
+			}
+			.img-fluid{
+				height: 300px !important;
+			}
+			.img-fluid:hover{
+				height: 320px !important;
+			}
+		}
+  	</style>
+</head>
+<body>
+	<div class="container-well text-center">
+		<h1 class="display-1 mb-4 pb-4 top text-success">WELCOME</h1>
+	</div>
+	<div class="container-well main text-center d-flex mt-4 pt-4">
+		<div class="container customer">
+			<a href="/customer"><img src="customer.png" class="img-fluid" alt="Responsive image" title="Customer"></a>
+		</div>
+		<div class="container manager">
+			<a href="/manager"><img src="manager.png" class="img-fluid" alt="Responsive image" title="Manager"></a>
+		</div>
+	</div>
+	<script src="http://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+</body>
+</html>

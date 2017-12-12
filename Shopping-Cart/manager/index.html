@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Manager</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<style>
+		.toptext{
+			font-size: 2rem;
+			width: 90%;
+			margin: auto;
+			font-family: serif;
+		}
+		.card-body{
+			background-color: #b9f6ca;
+		}
+		button{
+			cursor: pointer;
+		}
+		input{
+			text-align: right;
+		}
+		@media only screen and (min-width: 480px){
+			.toptext{
+				font-size: 3rem;
+			}
+		}
+		@media only screen and (min-width: 720px){
+			.toptext{
+				font-size: 4rem;
+			}
+		}
+		@media only screen and (min-width: 1120px){
+			.toptext{
+				font-size: 5rem;
+			}
+		}
+  	</style>
+</head>
+<body>
+	<div class="container-well d-flex mb-2 pb-2" style="background: linear-gradient(to top,white,lightblue);">
+		<h1 class="container-well text-center" style="width: 10%; margin: auto;">
+			<a href="/"><button type="button" class="btn btn-outline-info" id="home"><i class="fa fa-home" aria-hidden="true"></i> Home</button></a>
+		</h1>
+		<h1 class="display-1 text-center toptext" style="color: #00838f;">MANAGER</h1>
+	</div>
+	<div class="container mt-3 pt-3 mb-3 pb-3"> 
+		<table class="table table-hover table-responsive text-info table-info">
+			<tbody>
+				<tr>
+					<td style="width: 7%; font-size: 1.2rem !important;">Product Name</td>
+					<td style="width: 29%">
+						<input type="text" class="form-control" placeholder="Enter Name" id="name">
+					</td>
+				</tr>
+				<tr>
+					<td style="font-size: 1.2rem !important;">Brand</td>
+					<td>
+						<input type="text" class="form-control" placeholder="Enter Brand" id="brand">
+					</td>
+				</tr>
+				<tr>
+					<td style="font-size: 1.2rem !important;">Description</td>
+					<td>
+						<input type="text" class="form-control" placeholder="Enter Description" id="description">
+					</td>
+				</tr>
+				<tr>
+					<td style="font-size: 1.2rem !important;">Price</td>
+					<td>
+						<div class="input-group">
+						  	<span class="input-group-addon"><i class="fa fa-inr" aria-hidden="true"></i></span>
+						  	<input type="text" class="form-control" placeholder="Enter Price" id="price">
+						  	<span class="input-group-addon">.00</span>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td style="font-size: 1.2rem !important;">Discount</td>
+					<td>
+						<div class="input-group">
+						  	<input type="text" class="form-control" placeholder="Enter Discont" id="discount">
+						  	<span class="input-group-addon" id="basic-addon2">%</span>
+						</div>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<div class="container text-center">
+			<button type="button" class="btn btn-outline-dark" id="addBtn">Add Item</button>
+		</div>
+	</div>
+	<div class="container mt-2 pt-2 mb-2 pb-2">
+		<div class="card-columns" style="column-count: 1" id="list">
+			
+		</div>
+	</div>
+	<script src="http://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="manager_js.js"></script>
+</body>
+</html>

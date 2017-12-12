@@ -1,0 +1,112 @@
+		.loader {
+			position: absolute;
+			top: 25%;
+			left: 43%;
+			transform: translateX(50%);
+			border: 16px solid #f3f3f3;
+			border-top: 16px solid #3498db;
+			border-radius: 50%;
+			width: 70px;
+			height: 70px;
+			animation: spin 1.5s linear infinite;
+			z-index: 1500;
+			display: none;
+		}
+		.overlay {
+			position: absolute;
+			height: 100%;
+			width: 100%;
+			opacity: 0.7;
+			background-color: black;
+			top: 0px;
+			left: 0px;
+			z-index: 1400;
+			display: none;
+			cursor: pointer;
+		}
+		.caro {
+			height: 200px;
+		}
+		.main {
+			z-index: 1600;
+			position: absolute;
+			top:0px;
+			width:100%;
+			display: none;
+		}
+		#map {
+			position:relative;
+			height: 250px;
+			width: 100%;
+		}
+		.cards {
+			width: 100%;
+		}
+		.cardList {
+			width: 100%;
+			margin-bottom: 2px;
+			font-size: 0.7rem !important;
+		}
+		.cardHead {
+			padding:2px;
+		}
+		.cardBody {
+			padding:2px;
+		}
+		.close {
+			position: relative;
+			width: 99%;
+			height: 50px;
+			background-color: red;
+			cursor: pointer;
+			text-align: center;
+		}
+		@media only screen and (min-width: 420px){
+			.loader {
+				top: 30%;
+				width: 85px;
+				height: 85px;
+			}
+			.caro {
+				height: 300px;
+			}
+		}
+		@media only screen and (min-width: 720px){
+			.loader {
+				top: 40%;
+				width: 100px;
+				height: 100px;
+			}
+			#map {
+				height: 400px;
+				width: 100%;
+			}
+			.caro {
+				height: 400px;
+			}
+		}
+		@media only screen and (min-width: 1120px){
+			.main {
+				top:2%;
+				left:3%;
+				width: 96%;
+				right:1%;
+				height: 98;
+			}
+			#map {
+				height: 550px;
+				order:3;
+				width:81%;
+			}
+			.cards {
+				order:2;
+				width:18%;
+			}
+			.caro {
+				height: 500px;
+			}
+		}
+		@keyframes spin {
+			0% { transform: rotate(0deg); }
+			100% { transform: rotate(360deg); }
+		}

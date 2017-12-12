@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Traveller</title>
+	<meta name=viewport content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <style>
+		#map {
+			height: 400px;
+			width: 100%;
+		}
+		.heading {
+			color:cornflowerblue;
+			position: relative;
+			height: 8%;
+			z-index: 1600;
+			background: linear-gradient(to bottom, white, white, lightblue);
+		}
+		.head_text {
+			font-size: 2rem;
+		}
+		#map {
+			height: 300px;
+		}
+		button {
+			cursor: pointer;
+		}
+		.overlay {
+			position: absolute;
+			height: 93%;
+			width: 100%;
+			opacity: 0.7;
+			background-color: black;
+			top: 7%;
+			left: 0px;
+			z-index: 1500;
+			display: none;
+		}
+		.wthForecast {
+			padding: 0px;
+			position: absolute;
+			top: 0px;
+			transform: translateY(20%);
+			z-index: 1700;
+			display: none;
+			width: 100%;
+		}
+		.loader {
+			position: absolute;
+			top: 25%;
+			left: 43%;
+			transform: translateX(50%);
+			border: 16px solid #f3f3f3;
+			border-top: 16px solid #3498db;
+			border-radius: 50%;
+			width: 70px;
+			height: 70px;
+			animation: spin 1.5s linear infinite;
+			z-index: 1500;
+			display: none;
+		}
+
+		@media only screen and (min-width: 420px){
+			.heading {
+				height: 10%;
+			}
+			.head_text {
+				font-size: 2.5rem;
+			}
+			.overlay {
+				height: 91%;
+				top: 8%;
+			}
+			.wthForecast {
+				transform: translateY(28%);
+				width: 70%;
+				left:15%;
+				right:15%;
+			}
+			.wthHead {
+				font-size: 2rem;
+			}
+			.loader {
+				top: 30%;
+				width: 85px;
+				height: 85px;
+			}
+		}
+		@media only screen and (min-width: 720px){
+			.head_text {
+				font-size: 3rem;
+			}
+			.overlay {
+				height: 91%;
+				top: 9%;
+			}
+			.wthForecast {
+				transform: translateY(35%);
+				width: 50%;
+				left:25%;
+				right:25%;
+			}
+			.wthHead {
+				font-size: 2.25rem;
+			}
+			.loader {
+				top: 40%;
+				width: 100px;
+				height: 100px;
+			}
+		}
+		@media only screen and (min-width: 1120px){
+			.head_text {
+				font-size: 3.5rem;
+			}
+			.overlay {
+				height: 91%;
+				top: 9%;
+			}
+			.wthHead {
+				font-size: 2.5rem;
+			}
+			.inpBt {
+				display: flex;
+			}
+			.inp {
+				height:370px;
+				transform: translateY(30%);
+				width:28%;
+			}
+			#map {
+				margin-right: 5px;
+				height:500px;
+				width:68%;
+			}
+		}
+		@keyframes spin {
+			0% { transform: rotate(0deg); }
+			100% { transform: rotate(360deg); }
+		}
+    </style>
+</head>
+<body style="background-color: lightblue">
+    <div class="container-well heading text-center"><h1 class="display-4 head_text"><u><b>TR<i class="fa fa-car" aria-hidden="true"></i>VELLER</b></u></h1></div>
+	<div class="overlay" id="orlay"></div>
+	<div class="container inpBt mt-3 pt-3">
+		<div class="container mapCont" id="map"></div>
+		<div class="container-well inp mt-2 pt-2 px-2">
+			<table>
+				<tbody>
+					<tr>
+						<td>
+							<p class="h6">Enter Latitude</p>
+						</td>
+						<td>
+							<input type="text" id="lat" style="text-align:right">
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<p class="h6">Enter Longitude</p>
+						</td>
+						<td>
+							<input type="text" id="lng" style="text-align:right">
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<div class="container-well mt-1 pt-1">
+				<button type="button" class="btn btn-outline-primary p4" id="mapBtn" style="float:left; width:48%;">Display</button>
+				<button type="button" class="btn btn-outline-primary p4" id="wthBtn" style="float:right; width:48%;">Weather</button>
+			</div>
+		</div>
+	</div>
+	<div class="loader" id="ld"></div>
+	<div class="container wthForecast bg-info" id="wthCard">
+		<div class="container-well text-center d-flex" style="background-color: cornflowerblue">
+			<p class="h3 wthHead" style="margin: auto;">Weather Forecast</p>
+			<button type="button" id="closeBtn" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+		<div class="container-well">
+			<table class="table table-responsive table-hover" style="margin: auto;">
+				<tbody>
+					<tr class="table-info">
+						<th scope="row">Timezone</th>
+						<td id="tz"></td>
+					</tr>
+					<tr class="table-info">
+						<th scope="row">Latitude & Longitude</th>
+						<td id="ltlg"></td>
+					</tr>
+					<tr class="table-info">
+						<th scope="row">Time</th>
+						<td id="tm"></td>
+					</tr>
+					<tr class="table-info">
+						<th scope="row">Temperature</th>
+						<td id="tmp"></td>
+					</tr>
+					<tr class="table-info">
+						<th scope="row">Humidity</th>
+						<td id="hm"></td>
+					</tr>
+					<tr class="table-info">
+						<th scope="row">Pressure</th>
+						<td id="prs"></td>
+					</tr>
+					<tr class="table-info">
+						<th scope="row">Wind Speed</th>
+						<td id="ws"></td>
+					</tr>
+					<tr class="table-success">
+						<th scope="row">Summary</th>
+						<td id="sm"></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<script src="http://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="dark_sky.js"></script>
+	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCsAsrOzOOeb27M6-kPokJnaaRLG3EzEZY&callback=initMap"></script>
+</body>
+</html>

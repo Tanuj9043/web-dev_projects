@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Pick Your Point</title>
+	<meta name=viewport content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body style="background: linear-gradient(to bottom, black, white, black);">
+	<div class="loader" id="ld"></div>
+	<div class="overlay" id="orlay" onclick="closeAll()"></div>
+	<div class="container mt-3">
+		<div id="carouselIndicators" class="carousel slide" data-ride="carousel" data-interval="3500">
+			<ol class="carousel-indicators">
+				<li data-target="#caroIndicators" data-slide-to="0" class="active"></li>
+				<li data-target="#caroIndicators" data-slide-to="1"></li>
+				<li data-target="#caroIndicators" data-slide-to="2"></li>
+				<li data-target="#caroIndicators" data-slide-to="3"></li>
+				<li data-target="#caroIndicators" data-slide-to="4"></li>
+				<li data-target="#caroIndicators" data-slide-to="5"></li>
+			</ol>
+			<div class="carousel-inner caro">
+				<div class="carousel-item active" style="height:inherit">
+					<img class="d-block w-100" src="https://i.imgur.com/Ws7YNvY.jpg" alt="First slide">
+					<div class="carousel-caption d-none d-md-block">
+						<h2>FOOD</h2>
+						<p>Eat where you want!</p>
+					</div>
+				</div>
+				<div class="carousel-item" style="height:inherit">
+					<img class="d-block w-100" src="https://i.imgur.com/1hGa6k0.jpg" alt="Second slide">
+					<div class="carousel-caption d-none d-md-block">
+						<h2>COFFEE</h2>
+						<p>Refresh wher you want!</p>
+					</div>
+				</div>
+				<div class="carousel-item" style="height:inherit">
+					<img class="d-block w-100" src="https://i.imgur.com/1RMBbqk.jpg" alt="Third slide">
+					<div class="carousel-caption d-none d-md-block">
+						<h2>DRINKS</h2>
+						<p>Drink where you want!</p>
+					</div>
+				</div>
+				<div class="carousel-item" style="height:inherit">
+					<img class="d-block w-100" src="https://i.imgur.com/9rMqo7q.jpg" alt="Fourth slide">
+					<div class="carousel-caption d-none d-md-block">
+						<h2>SHOPS</h2>
+						<p>Spend where you want!</p>
+					</div>
+				</div>
+				<div class="carousel-item" style="height:inherit">
+					<img class="d-block w-100" src="https://i.imgur.com/T8Ju4CD.jpg" alt="Fifth slide">
+					<div class="carousel-caption d-none d-md-block">
+						<h2>ARTS</h2>
+						<p>Appraise where you want!</p>
+					</div>
+				</div>
+				<div class="carousel-item" style="height:inherit">
+					<img class="d-block w-100" src="https://i.imgur.com/qtFeKwx.jpg" alt="Sixth slide">
+					<div class="carousel-caption d-none d-md-block">
+						<h2>SIGHT</h2>
+						<p>Go where you want!</p>
+					</div>
+				</div>
+		  </div>
+			<a class="carousel-control-prev" href="#carouselIndicators" role="button" data-slide="prev">
+				<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+				<span class="sr-only">Previous</span>
+			</a>
+			<a class="carousel-control-next" href="#carouselIndicators" role="button" data-slide="next">
+				<span class="carousel-control-next-icon" aria-hidden="true"></span>
+				<span class="sr-only">Next</span>
+			</a>
+		</div>
+	</div>
+    <div class="container mt-2">
+		<form>
+			<div class="form-row">
+				<div class="form-group col-md-5">
+					<select class="form-control" id="placeType">
+						<option>Food</option>
+						<option>Drinks</option>
+						<option>Coffee</option>
+						<option>Shops</option>
+						<option>Arts</option>
+						<option>Sights</option>
+					</select>
+				</div>
+				<div class="form-group col-md-5">
+					<input type="text" class="form-control" id="place" placeholder="Enter location">
+				</div>
+				<div class="form-group col-md-2" style="text-align: center; margin-top:auto;">
+					<button type="button" class="btn btn-primary" id="showBtn" style="cursor:pointer">Show Places</button>
+				</div>
+			</div>
+		</form>
+	</div>
+	<div class="container-well main mt-2">
+		<div class="container-well mx-1 close" id="closeBtn"><p class="h5" style="margin: auto; transform: translateY(50%);"><i class="fa fa-times" aria-hidden="true"></i> CLOSE</p></div>
+		<div class="container-well mx-1" id="map"></div>
+		<div class="card cards"></div>
+	</div>
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+	<script src="http://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="locate.js"></script>
+	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCsAsrOzOOeb27M6-kPokJnaaRLG3EzEZY&callback=initMap"></script>
+</body>
+</html>

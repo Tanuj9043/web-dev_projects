@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Instagram</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+	<style>
+		.profImg{
+			border-style: solid;
+   		 	border-width: 3px;
+   		 	border-color: purple;
+   		 	border-radius: 50%;
+		}
+		.instagram-pic{
+			position: relative;
+    		border-style: solid;
+   		 	border-width: 3px;
+   	 		border-color: indigo;
+   	 		transition: height .3s;
+   	 		 margin: 0 auto; /* Added */
+        	float: none; /* Added */
+        	margin-bottom: 10px; /* Added */
+		}
+		.bar{
+			color: hotpink;
+			bottom: 0px;
+			width: inherit;
+			position: absolute;
+			display: flex;
+			z-index: 1500;
+			background-color: ivory;
+			opacity: 0.9;
+		}
+		.likes, .comments{
+			width: 50%;
+		}
+		.info{
+			margin: auto;
+		}
+		.main{
+			background: linear-gradient(to top, white, indigo);
+		}
+		#name{
+			color: darkblue;
+			font-size: 3rem;
+		}
+		#aka{
+			color: blue;
+			font-size: 1rem;
+		}
+		td{
+			color: blanchedalmond;
+		}
+		li{
+			background: linear-gradient(to right, white, pink);
+			cursor: pointer;
+		}
+		li:hover {
+			background: linear-gradient(to right, white, lightpink);
+		}
+		.badge-primary {
+   	 		background-color: cornflowerblue;
+		}
+		@media only screen and (min-width: 420px){
+			#name{
+				font-size: 3.5rem;
+			}
+			#aka{
+				font-size: 1.5rem;
+			}
+		}
+		@media only screen and (min-width: 720px){
+			.main{
+				display: flex;
+			}
+			#profileImg{
+				width: 25%;
+			}
+			.fullInfo{
+    			width: 75%;
+    			display: flex;
+			}
+			.profileName{
+    			width: 60%;
+			}
+			.info{
+    			width: 40%;
+			}
+			#name{
+				font-size: 4rem;
+			}
+			#aka{
+				font-size: 2rem;
+			}
+		@media only screen and (min-width: 1120px){
+			#name{
+				font-size: 4.5rem;
+			}
+			#aka{
+				font-size: 2.5rem;
+			}
+		}
+  	</style>
+</head>
+<body>
+	<div class="jumbotron main">
+		<div class="container text-center" id="profileImg">
+		</div>
+		<div class="container fullInfo">
+			<div class="container-well profileName">
+				<div class="container text-center">
+					<h1 class="display-3" id="name"></h1>
+				</div>
+				<div class="container text-center">
+					<p class="h1" id="aka"></p>
+				</div>
+			</div>
+			<div class="container info">
+				<ul class="list-group" style="margin: auto;">
+  					<li class="list-group-item d-flex justify-content-between align-items-center">
+				    	Media
+				    	<span class="badge badge-primary badge-pill" id="mediaCount"></span>
+				  	</li>
+				  	<li class="list-group-item d-flex justify-content-between align-items-center">
+				    	Following
+				    	<span class="badge badge-primary badge-pill" id="following"></span>
+				 	</li>
+				 	<li class="list-group-item d-flex justify-content-between align-items-center">
+				    	Followers
+				    	<span class="badge badge-primary badge-pill" id="followers"></span>
+				  	</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="container pt-2 pb-2" style="background-color: indigo; border-radius: 2rem;">
+		<form>
+			<div class="form-row">
+				<div class="form-group col-md-10" style="margin: auto;">
+					<input type="text" class="form-control" id="tagName" placeholder="Enter tag" style="border-radius: 2rem;">
+				</div>
+				<div class="form-group col-md-2" style="text-align: center; margin:auto;">
+					<button type="button" class="btn btn-primary" id="showBtn" style="cursor:pointer; border-radius: 2rem;">Show Media</button>
+				</div>
+			</div>
+		</form>
+	</div>
+	<div class="container d-flex text-center mt-2 pt-2 mb-3 pb-3" id="media" style="flex-wrap: wrap;">
+        
+    </div>
+	<script src="http://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="javascript.js"></script>
+</body>
+</html>
